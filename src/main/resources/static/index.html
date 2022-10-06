@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul></ul>
+test
+
+<script>
+    const evtSource = new EventSource('/customer/sse');
+    const eventList = document.querySelector('ul');
+
+    evtSource.onmessage = (e) => {
+        const newElement = document.createElement("li");
+
+        newElement.textContent = `message: ${e.data}`;
+        eventList.appendChild(newElement);
+    }
+</script>
+
+</body>
+</html>
